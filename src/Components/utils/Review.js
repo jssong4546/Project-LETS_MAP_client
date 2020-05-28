@@ -126,12 +126,10 @@ class Review extends Component {
       },
     };
     console.log(localStorage.getItem('userToken'));
-    axios
-      .post(`http://${process.env.REACT_APP_EC2_HOST}/userinfo`, null, config)
-      .then((res) => {
-        console.dir(res);
-        this.props.loginHandler(res.data.userid);
-      });
+    axios.post(`http://localhost:4000/userinfo`, null, config).then((res) => {
+      console.dir(res);
+      this.props.loginHandler(res.data.userid);
+    });
     // 해당 가게의 리뷰를 서버에서 가져온다.
     var requestOptions = {
       method: 'GET',
@@ -140,7 +138,7 @@ class Review extends Component {
     let position = queryString.parse(this.props.location.search);
     if (position) {
       fetch(
-        `http://${process.env.REACT_APP_EC2_HOST}/review?logt=${position.logt}&lat=${position.lat}`,
+        `http://localhost:4000/review?logt=${position.logt}&lat=${position.lat}`,
         requestOptions,
       )
         .then((response) => response.json())
@@ -183,10 +181,7 @@ class Review extends Component {
                     };
                     console.log(data);
                     axios
-                      .post(
-                        `http://${process.env.REACT_APP_EC2_HOST}/review`,
-                        data,
-                      )
+                      .post(`http://localhost:4000/review`, data)
                       .then((res) => {
                         if (res.status === 200) {
                           this.props.history.push(

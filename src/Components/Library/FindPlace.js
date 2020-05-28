@@ -134,9 +134,7 @@ export default function (searchedPlace) {
           console.log('읍면동으로만 잘라서 검색할 때 : ' + addressRefactored);
 
           axios
-            .get(
-              `http://${process.env.REACT_APP_EC2_HOST}/?address=${addressRefactored}`,
-            )
+            .get(`http://localhost:4000/?address=${addressRefactored}`)
             .then((res) => {
               console.log('경기도 API에서 받아온 데이터 :', res.data);
               if (res.data.addressList.length === 0) {

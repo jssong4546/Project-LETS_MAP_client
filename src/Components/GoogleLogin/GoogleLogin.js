@@ -66,10 +66,7 @@ class GoogleLogin extends Component {
           }),
         };
 
-        fetch(
-          `http://${process.env.REACT_APP_EC2_HOST}/signin_google`,
-          requestOptions,
-        )
+        fetch(`http://localhost:4000/signin_google`, requestOptions)
           .then((response) => response.text())
           .then((result) => JSON.parse(result))
           .then((json) => {

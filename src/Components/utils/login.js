@@ -110,17 +110,13 @@ class Login extends React.Component {
                     e.preventDefault();
                     let data = this.state;
                     axios
-                      .post(
-                        `http://${process.env.REACT_APP_EC2_HOST}/signin`,
-                        data,
-                      )
+                      .post(`http://localhost:4000/signin`, data)
                       .then((res) => {
                         if (res.status === 200) {
                           localStorage.setItem('userToken', res.data.token);
                           this.props.loginHandler(res.data.userid);
                           this.props.history.push('/');
                         }
-                        
                       })
                       .catch((err) => {
                         console.log(err);

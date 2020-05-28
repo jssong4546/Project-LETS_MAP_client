@@ -45,7 +45,7 @@ function App() {
       setLoading(true);
 
       let res = await axios.get(
-        `http://${process.env.REACT_APP_EC2_HOST}/filteringMarket?address=${input}&indutype=${indu}`,
+        `http://localhost:4000/filteringMarket?address=${input}&indutype=${indu}`,
       );
       let marketList = res.data.addressList;
 

@@ -100,10 +100,7 @@ class Signup extends React.Component {
                     e.preventDefault();
                     let data = this.state;
                     axios
-                      .post(
-                        `http://${process.env.REACT_APP_EC2_HOST}/signup`,
-                        data,
-                      )
+                      .post(`http://localhost:4000/signup`, data)
                       .then((res) => {
                         console.log(res.data);
                         this.props.history.push('/');

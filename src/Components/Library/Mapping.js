@@ -123,7 +123,7 @@ export default function (location, marketList) {
         function displayCenterInfo(result, status) {
           axios
             .get(
-              `http://${process.env.REACT_APP_EC2_HOST}/?address=${result[0].address.region_3depth_name}`,
+              `http://localhost:4000/?address=${result[0].address.region_3depth_name}`,
             )
             .then((res) => {
               console.log('경기도 API에서 받아온 데이터 :', res.data);
